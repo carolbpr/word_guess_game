@@ -1,7 +1,10 @@
 
 // Varibles/Counters
 var wins = 0
-// var userChoicetext = document.getElementById("userchoice-text");
+var winstext = document.getElementById("wins-text");
+currentwordtext = document.getElementById("currentword-text");
+remainingguessestext = document.getElementById("remainingguesses-text");
+letterguessestext = document.getElementById("letterguesses-text");
 //This function setup the initial game
 function initgame() {
     //reinitiating the all the variables
@@ -19,8 +22,8 @@ function initgame() {
     for (var i = 0; i < wordselected.length; i++) {
         answerArray[i] = "_";
         string.push(wordlowercase.charAt(i));
-        if (string[i]=== " "){
-            answerArray[i]=" "
+        if (string[i] === " ") {
+            answerArray[i] = " "
             countercomplete++;
         }
     }
@@ -84,14 +87,14 @@ document.onkeyup = function (event) {
         }
 
     }
+    winstext.textContext = wins;
+    currentwordtext.textContext = answerArray;
+    remainingguessestext.textContext = remainingLetters;
+    letterguessestext.textContext = wrongletter;
 
 }
 
 
-    // console.log(wordlowercase.charAt(0))
-    // console.log(userGuess);
-    // console.log(wordselected);
-    // console.log(wordselected.length);
 
 
 
