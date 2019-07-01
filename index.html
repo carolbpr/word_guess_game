@@ -12,26 +12,41 @@
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     </head>
     <body>
+        
         <div class="gamelogo">
-            <h1>*HANGMAN LOGO WILL BE DISPLAY HERE*</h1>
+            <h1>GAME WORD</h1>
         </div>
-        <div class="container ">
-            <div class="row">
-                <div class="col-12">
-                    <h3>*RESULTS WILL BE DISPLAY HERE*</h3>
-                    <p id = "userchoice-text"></p>
-                    <p id="remainingletter-text"></p>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-12">
+                    <h3>Let's play and learn all the States of America</h3>
+
                 </div>
             </div>
-            <div class="row">
+            <div class="row align-items-center">
+                    <div class="col-12 col-lg-12">
+                        <br>
+                        <h2 id="answer-text"></h2>
+    
+                    </div>
+                </div>
+            <div class="row style=text-align:left">
                 <div class="col-6">
-                    <h5>*A PICTURE REFERENCE WILL BE DISPLAY HERE*</h5>
+                        <img src="assets/images/USA_map.png">
                 </div>
                 <div class="col-6">
-                    <h5>*ACTUAL GAME WILL BE DISPLAY HERE*</h5>
+                    <h5 id ="initialmessage-text">Press a letter to start playing!</h5><br><br>
+                    <h2>Wins</h2><br>
+                    <h1 id = "wins-text"></h1>
+                    <h6>Current Word</h6><br>
+                    <h4 id="currentword-text"></h4>
+                    <h6>Remaining Letters</h6><br>
+                    <h4 id="remainingguesses-text"></h4>
+                    <h6>Letters Already Guessed</h6><br>
+                    <h4 id="letterguesses-text"></h4>
                 </div> 
             </div>
-        </div>../
+        </div>
         <script src="assets/javascript/game.js"></script>
     </body>
 </html>

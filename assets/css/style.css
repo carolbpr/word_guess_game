@@ -1,3 +1,37 @@
 body{
     background-image: url(../images/ps_neutral_@2X.png);
+    font-family:'Barriecito';
+    align-content: center;
+
+}
+img{
+    width: 50%;
+    height: auto;
+    z-index: -2;
+    position: relative;   
+}
+.container{
+    height: auto;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-style: dashed;
+    border-color:black;
+    padding:0;
+    
+}
+.gamelogo{
+    text-align: center;
+
+}
+h1{
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+h3{
+    background-image: linear-gradient(purple, yellow);
+
+}
+h2{
+    background-image: linear-gradient(yellow,teal);
 }

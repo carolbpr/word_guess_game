@@ -2,12 +2,15 @@
 // Varibles/Counters
 var wins = 0
 var winstext = document.getElementById("wins-text");
-currentwordtext = document.getElementById("currentword-text");
-remainingguessestext = document.getElementById("remainingguesses-text");
-letterguessestext = document.getElementById("letterguesses-text");
+var currentwordtext = document.getElementById("currentword-text");
+var remainingguessestext = document.getElementById("remainingguesses-text");
+var letterguessestext = document.getElementById("letterguesses-text");
+var initialMessagetext = document.getElementById("initialmessage-text");
+var answertext = document.getElementById("answer-text");
 //This function setup the initial game
 function initgame() {
     //reinitiating the all the variables
+    initialMessagetext.textContent = "Press a letter to start playing!";
     wrongletter = [];
     remainingLetters = 12;
     countercomplete = 0;
@@ -15,10 +18,11 @@ function initgame() {
     youlost = false;
     alredyguessedletter = [];
     wordselected = usastates[Math.floor(Math.random() * usastates.length)];
-    wordlowercase = wordselected.toLowerCase();
+    wordlowercase = wordselected.toUpperCase();
     console.log(wordselected);
     string = [];
     answerArray = [];
+    userGuess = "[A-Za-z]{1}";
     for (var i = 0; i < wordselected.length; i++) {
         answerArray[i] = "_";
         string.push(wordlowercase.charAt(i));
@@ -44,29 +48,33 @@ var youlost = false;
 var alredyguessedletter = [];
 var wordselected = null;
 var wordlowercase = null;
+var userGuess="[A-Za-z]{1}"
 initgame();
 console.log(answerArray);
 console.log(string);
 
 document.onkeyup = function (event) {
     // Determines which key was pressed.
+    initialMessagetext.textContent =" ";
+    answertext.textContent = " ";
     var letterfound = false;
-    var userGuess = event.key;
+    userGuess = event.key;
     if (alredyguessedletter.includes(userGuess)) {
         alert("Choose another letter, you already guessed this");
     }
+
     else {
         alredyguessedletter.push(userGuess);
         for (var j = 0; j < wordlowercase.length; j++) {
-            if (userGuess.toLowerCase() === string[j]) {
-                answerArray[j] = userGuess;
+            if (userGuess.toUpperCase() === string[j]) {
+                answerArray[j] = userGuess.toUpperCase();
                 countercomplete++;
                 console.log(answerArray);
                 letterfound = true;
                 if (countercomplete === wordselected.length) {
                     complete = true;
                     console.log(complete);
-                    alert("Congrats! The answer is " + wordselected);
+                    answertext.textContent = "Congrats! The answer is " + wordselected;
                     wins++
                     console.log(wins);
                     initgame();
@@ -76,23 +84,26 @@ document.onkeyup = function (event) {
         if (letterfound === false) {
             remainingLetters--;
             console.log(remainingLetters);
-            wrongletter.push(userGuess);
+            wrongletter.push(userGuess.toUpperCase());
             console.log(wrongletter);
             if (remainingLetters === 0) {
                 youlost = true;
                 console.log(youlost);
-                alert("Sorry! You lost")
+                alert("Sorry! You lost. Try again !")
                 initgame()
             }
         }
 
     }
-    winstext.textContext = wins;
-    currentwordtext.textContext = answerArray;
-    remainingguessestext.textContext = remainingLetters;
-    letterguessestext.textContext = wrongletter;
 
-}
+    winstext.textContent = wins;
+    //Replace "," to " "(spaces)
+    currentwordtext.textContent = answerArray.toString().replace(new RegExp(",", 'g')," ");
+    remainingguessestext.textContent = remainingLetters;
+    //Replace "," to " "(spaces)
+    letterguessestext.textContent = wrongletter.toString().replace(new RegExp(",", 'g')," ");
+    
+};
 
 
 
