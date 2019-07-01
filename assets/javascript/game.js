@@ -52,17 +52,19 @@ var userGuess="[A-Za-z]{1}"
 initgame();
 console.log(answerArray);
 console.log(string);
-
 document.onkeyup = function (event) {
     // Determines which key was pressed.
     initialMessagetext.textContent =" ";
     answertext.textContent = " ";
-    var letterfound = false;
     userGuess = event.key;
+    var letterfound = false;
+    var keyCode = event.which;
     if (alredyguessedletter.includes(userGuess)) {
         alert("Choose another letter, you already guessed this");
     }
-
+    else if (keyCode<65 || keyCode>90){
+        alert("Please choose just letters");
+    }
     else {
         alredyguessedletter.push(userGuess);
         for (var j = 0; j < wordlowercase.length; j++) {
