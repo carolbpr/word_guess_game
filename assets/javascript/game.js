@@ -28,7 +28,7 @@ var states = {
     Alabama: "assets/images/Alabama.png",
     Alaska: "assets/images/Alaska.png",
     Arizona: "assets/images/Arizona.png",
-    Arkansas: "assets/images/Arizona.png",
+    Arkansas: "assets/images/Arkansas.png",
     California: "assets/images/California.png",
     Colorado: "assets/images/Colorado.png",
     Connecticut: "assets/images/Connecticut.png",
@@ -88,6 +88,9 @@ function initgame() {
     complete = false;
     youlost = false;
     alredyguessedletter = [];
+    stateimage ="";
+    endthisfunction = false;
+
     //Randomly select the State name for the player to guess
     wordselected = usastates[Math.floor(Math.random() * usastates.length)];
     wordlowercase = wordselected.toUpperCase();
@@ -118,7 +121,6 @@ function findimage() {
     for (var i = 0; i < wordselected.length; i++) {
         if (wordselected.charAt(i) === " ") {
             stateimage = wordselected.replace(/ /i, "_");
-            console.log(stateimage);
             endthisfunction = true;
         }
         else if (endthisfunction === false) {
