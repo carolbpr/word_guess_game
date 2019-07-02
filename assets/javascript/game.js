@@ -169,7 +169,7 @@ document.onkeyup = function (event) {
 
                 //This condition will check if the word is completed
                 if (countercomplete === wordselected.length) {
-                    
+
                     complete = true;
                     //will play a Winner sound
                     document.getElementById('winner-sound').play();
@@ -181,7 +181,7 @@ document.onkeyup = function (event) {
                     modal.style.display = "block";
                     imageanwser.src = states[stateimage];
                     captionText.textContent = wordselected;
-                   
+
 
                     // Get the <span> element that closes the modal
                     var span = document.getElementsByClassName("close")[0];
