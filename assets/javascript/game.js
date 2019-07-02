@@ -220,7 +220,7 @@ document.ontouchend = function(event){
 
 } 
 }
-document.onkeyup = function (event) {
+test.on('touchend', function(event){
     // Determines which key was pressed.  
     initialMessagetext.textContent = " ";
     answertext.textContent = " ";
