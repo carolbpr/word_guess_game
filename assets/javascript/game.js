@@ -181,7 +181,7 @@ document.onkeyup = function (event) {
                     modal.style.display = "block";
                     imageanwser.src = states[stateimage];
                     captionText.textContent = wordselected;
-                    initgame();
+                   
 
                     // Get the <span> element that closes the modal
                     var span = document.getElementsByClassName("close")[0];
