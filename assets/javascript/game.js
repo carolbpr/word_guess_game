@@ -137,7 +137,7 @@ var usastates = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colo
 
 // When user press a key this function is run.
 initgame();
-document.ontouchend = function(event){
+test.on('keyup touchend', function(event){
    // Determines which key was pressed.  
     initialMessagetext.textContent = " ";
     answertext.textContent = " ";
@@ -219,8 +219,8 @@ document.ontouchend = function(event){
     letterguessestext.textContent = wrongletter.toString().replace(new RegExp(",", 'g'), " ");
 
 } 
-}
-test.on('touchend', function(event){
+
+document.onkeyup = function (event) {
     // Determines which key was pressed.  
     initialMessagetext.textContent = " ";
     answertext.textContent = " ";
