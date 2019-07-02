@@ -1,5 +1,4 @@
-
-// Varibles/Counters
+//Varibles/Counters initialization and declarations
 var wins = 0
 var winstext = document.getElementById("wins-text");
 var currentwordtext = document.getElementById("currentword-text");
@@ -11,8 +10,20 @@ var imageanwser = document.getElementById("image-answer");
 var modal = document.getElementById("popupImage");
 var captionText = document.getElementById("imageCaption");
 var endthisfunction = false;
-//var states = document.createElement("img");
 var stateimage = "";
+var string = [];
+var answerArray = [];
+var wrongletter = [];
+var remainingLetters = 12;
+var countercomplete = 0;
+var complete = false;
+var youlost = false;
+var alredyguessedletter = [];
+var wordselected = null;
+var wordlowercase = null;
+var userGuess = "[A-Za-z]{1}";
+
+//Create an object to hold all the image source per State
 var states = {
     Alabama: "assets/images/Alabama.png",
     Alaska: "assets/images/Alaska.png",
@@ -65,8 +76,10 @@ var states = {
     Wisconsin: "assets/images/Wisconsin.png",
     Wyoming: "assets/images/Wyoming.png",
 }
-//This function setup the initial game
+
+//This function setup the initial game after Winning or Losing
 function initgame() {
+   
     //reinitiating the all the variables
     initialMessagetext.textContent = "Press a letter to continue playing!";
     wrongletter = [];
@@ -75,12 +88,21 @@ function initgame() {
     complete = false;
     youlost = false;
     alredyguessedletter = [];
+    //Randomly select the State name for the player to guess
     wordselected = usastates[Math.floor(Math.random() * usastates.length)];
     wordlowercase = wordselected.toUpperCase();
-    console.log(wordselected);
+    
+    //This string array will hold the an array to later compare if the word is completed or not
     string = [];
+    
+    //This array will be holding the letters entered by the player
     answerArray = [];
+    
+    //userGuess variable can only be letters
     userGuess = "[A-Za-z]{1}";
+
+    //This loop is created the array to hold the initial count of letter with "_" per letter and will 
+    //delete any space if the State name has it ex: North Carolina
     for (var i = 0; i < wordselected.length; i++) {
         answerArray[i] = "_";
         string.push(wordlowercase.charAt(i));
@@ -90,6 +112,8 @@ function initgame() {
         }
     }
 }
+
+//This function is created to find the image source in the "states" object
 function findimage() {
     for (var i = 0; i < wordselected.length; i++) {
         if (wordselected.charAt(i) === " ") {
@@ -102,26 +126,15 @@ function findimage() {
         }
     }
 }
+
 //Create an array with the list of the States of United States of America.
 var usastates = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana",
     "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire",
     "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee",
     "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
+
 // When user press a key this function is run.
-var string = [];
-var answerArray = [];
-var wrongletter = [];
-var remainingLetters = 12;
-var countercomplete = 0;
-var complete = false;
-var youlost = false;
-var alredyguessedletter = [];
-var wordselected = null;
-var wordlowercase = null;
-var userGuess = "[A-Za-z]{1}"
 initgame();
-console.log(answerArray);
-console.log(string);
 document.onkeyup = function (event) {
     // Determines which key was pressed.  
     initialMessagetext.textContent = " ";
@@ -129,52 +142,64 @@ document.onkeyup = function (event) {
     userGuess = event.key;
     var letterfound = false;
     var keyCode = event.which;
+    
+    //This conditions determinate either if the letter entered has been already entered, if it is a letter or not, of if it is a new letter
     if (alredyguessedletter.includes(userGuess)) {
         document.getElementById('nope-sound').play();
         alert("Choose another letter, you already guessed this");
     }
     else if (keyCode < 65 || keyCode > 90) {
+        document.getElementById('nope-sound').play();
         alert("Please choose just letters");
     }
+    
+    //if it is a new letter then these conditions will identify if the letter is part of the word or not
     else {
         document.getElementById('click-sound').play();
         alredyguessedletter.push(userGuess);
         for (var j = 0; j < wordlowercase.length; j++) {
+           
+           //This condition will fill the answer array with the letters that are part of the word
             if (userGuess.toUpperCase() === string[j]) {
                 answerArray[j] = userGuess.toUpperCase();
                 countercomplete++;
-                console.log(answerArray);
                 letterfound = true;
+                
+                //This condition will check if the word is completed
                 if (countercomplete === wordselected.length) {
                     complete = true;
-                    console.log(complete);
                     findimage();
 
+                    //This will show a popup window with the correct answer guessed and a Image of the State
                     modal.style.display = "block";
                     imageanwser.src = states[stateimage];
                     captionText.textContent = wordselected;
+                   
                     // Get the <span> element that closes the modal
                     var span = document.getElementsByClassName("close")[0];
+                   
                     // When the user clicks on <span> (x), close the modal
                     span.onclick = function () {
                         modal.style.display = "none";
                     }
+                   
+                   //will play a Winner sound
                     document.getElementById('winner-sound').play();
                     answertext.textContent = "Congrats! The answer is " + wordselected;
                     wins++
-                    console.log(wins);
                     initgame();
                 }
             }
         }
+
+        //This condition will fill the array with the wrong letters
         if (letterfound === false) {
             remainingLetters--;
-            console.log(remainingLetters);
             wrongletter.push(userGuess.toUpperCase());
-            console.log(wrongletter);
+            
+            //This condition will check if the user has remaining time to guess 
             if (remainingLetters === 0) {
                 youlost = true;
-                console.log(youlost);
                 document.getElementById('lost-sound').play();
                 alert("Sorry! You lost. Try again !")
                 initgame()

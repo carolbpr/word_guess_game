@@ -49,7 +49,7 @@ h2{
     overflow: auto; /* Enable scroll if needed */
     background-color: rgba(0, 0, 0, 0); /* Black w/ opacity */
     }
-    /* Modal Content (image) */
+/* Modal Content (image) */
 .modal-content {
     margin: auto;
     display: block;
