@@ -21,6 +21,9 @@ img{
     padding:0;
     
 }
+.borderCol{
+    border-left:dashed,black;
+}
 .gamelogo{
     text-align: center;
 
@@ -35,3 +38,61 @@ h3{
 h2{
     background-image: linear-gradient(yellow,teal);
 }
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 200px;
+    top: 40px;
+    width: 300px; 
+    height:auto; 
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0); /* Black w/ opacity */
+    }
+    /* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width:300px;
+    height: auto;
+    border: 1px solid rgba(0,0,0,.9);
+      /* Add Animation */
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  #imageCaption {
+    margin: auto;
+    display: block;
+    width: auto;
+    text-align: center;
+    color: black;
+    font-size: 40px;
+    text-shadow: 2px 2px 5px red;
+    background-image: linear-gradient(white,teal);
+    border: 1px solid rgba(0,0,0,.9);
+  }
+  
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+  }
+  
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+  }
+  
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: #e60b0b;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.5s;
+  }
+  

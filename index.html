@@ -1,52 +1,80 @@
 <!DOCTYPE html>
 <html lang="en-us">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>HangMan</title>
-        <link href="https://fonts.googleapis.com/css?family=Barriecito&display=swap" rel="stylesheet">
-        <!--Linking Bootstrap-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <!-- Linking CSS -->
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    </head>
-    <body>
-        
-        <div class="gamelogo">
-            <h1>GAME WORD</h1>
-        </div>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-12 col-lg-12">
-                    <h3>Let's play and learn all the States of America</h3>
 
-                </div>
-            </div>
-            <div class="row align-items-center">
-                    <div class="col-12 col-lg-12">
-                        <br>
-                        <h2 id="answer-text"></h2>
-    
-                    </div>
-                </div>
-            <div class="row style=text-align:left">
-                <div class="col-6">
-                        <img src="assets/images/USA_map.png">
-                </div>
-                <div class="col-6">
-                    <h5 id ="initialmessage-text">Press a letter to start playing!</h5><br><br>
-                    <h2>Wins</h2><br>
-                    <h1 id = "wins-text"></h1>
-                    <h6>Current Word</h6><br>
-                    <h4 id="currentword-text"></h4>
-                    <h6>Remaining Letters</h6><br>
-                    <h4 id="remainingguesses-text"></h4>
-                    <h6>Letters Already Guessed</h6><br>
-                    <h4 id="letterguesses-text"></h4>
-                </div> 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HangMan</title>
+    <link href="https://fonts.googleapis.com/css?family=Barriecito&display=swap" rel="stylesheet">
+    <!--Linking Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Linking CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<!--Play this when you type a letter-->
+<audio id="click-sound" controls style="display:none">
+        <source src="zapsplat_multimedia_click_002_19368.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+</audio>
+<!--Play this when you win the game-->
+<audio id="winner-sound" controls style="display:none">
+        <source src="cartoon_success_fanfair.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+</audio>
+<!--Play this when you lost the game-->
+<audio id="lost-sound" controls style="display:none">
+        <source src="zapsplat_multimedia_game_lose_negative_001.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+</audio>
+<!--When the letter is been typed already-->
+<audio id="nope-sound" controls style="display:none">
+        <source src="zapsplat_multimedia_game_show_buzzer_001_27373.mp3" type="audio/mpeg"> Your browser does not support the audio element.
+</audio>
+<body>
+    <!--This Div contains a popup window with the State correct answer-->
+    <div id="popupImage" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="image-answer">
+        <div id="imageCaption"></div>
+    </div>
+    <!--This Div contains the game head-->
+    <div class="gamelogo">
+        <h1 style="font-size:90px;">GAME WORD</h1>
+    </div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-12">
+                <h3>Let's play and learn all the States of America</h3>
+
             </div>
         </div>
-        <script src="assets/javascript/game.js"></script>
-    </body>
+        <!--This Div contains the answer when you win the game-->
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-12">
+                <br>
+                <h2 id="answer-text"></h2>
+
+            </div>
+        </div>
+        <div class="row style=text-align:left">
+            <!--This Div contains the game>-->
+            <div class="col-6" >
+                <img src="assets/images/USA_map.png">
+
+            </div>
+            <div class="col-6">
+                <span id= "win-sound"></span>
+                <h5 id="initialmessage-text">Press a letter to start playing!</h5><br><br>
+                <h2>Wins</h2>
+                <h1 id="wins-text"></h1><br>
+                <h6>Current Word</h6>
+                <h4 id="currentword-text"></h4><br>
+                <h6>Remaining Letters</h6>
+                <h4 id="remainingguesses-text"></h4><br>
+                <h6>Letters Already Guessed</h6>
+                <h4 id="letterguesses-text"></h4><br>
+            </div>
+        </div>
+    </div>
+    <script src="assets/javascript/game.js"></script>
+</body>
+
 </html>
