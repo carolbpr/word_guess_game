@@ -146,17 +146,17 @@ document.onkeyup = function (event) {
     var keyCode = event.which;
 
     //This conditions determinate either if the letter entered has been already entered, if it is a letter or not, of if it is a new letter
-    if (alredyguessedletter.includes(userGuess)) {
+    if (alredyguessedletter.includes(userGuess) && complete === false) {
         document.getElementById('nope-sound').play();
         alert("Choose another letter, you already guessed this");
     }
-    else if (keyCode < 65 || keyCode > 90) {
+    else if ((keyCode < 65 || keyCode > 90) && complete === false) {
         document.getElementById('nope-sound').play();
         alert("Please choose just letters");
     }
 
     //if it is a new letter then these conditions will identify if the letter is part of the word or not
-    else {
+    else if (complete === false) {
         document.getElementById('click-sound').play();
         alredyguessedletter.push(userGuess);
         for (var j = 0; j < wordlowercase.length; j++) {
