@@ -52,7 +52,7 @@ var states = {
     Missouri: "assets/images/Missouri.png",
     Montana: "assets/images/Montana.png",
     Nebraska: "assets/images/Nebraska.png",
-    Nevada: "assets/images/Nevada..png",
+    Nevada: "assets/images/Nevada.png",
     New_Hampshire: "assets/images/New_Hampshire.png",
     New_Jersey: "assets/images/New_Jersey.png",
     New_Mexico: "assets/images/New_Mexico.png",
